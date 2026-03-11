@@ -24,8 +24,6 @@ const Author = () => {
       try {
         setLoading(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`,
         );

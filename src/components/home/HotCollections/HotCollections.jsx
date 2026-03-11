@@ -128,8 +128,7 @@ const HotCollections = () => {
                 : nft.map((item) => (
                     <div className="keen-slider__slide" key={item.id}>
                       <Link
-                        to={`/item-details/`}
-                        // will add item.nftId for itemdetail page
+                        to={`/item-details/${item.nftId}`}
                         className="nft-link"
                       >
                         <div className="nft_coll">
