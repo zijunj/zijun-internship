@@ -5,11 +5,12 @@ import axios from "axios";
 import "keen-slider/keen-slider.min.css";
 import "./HotCollections/HotCollections.css";
 import { useKeenSlider } from "keen-slider/react";
+import Skeleton from "../UI/Skeleton";
+import Countdown from "../UI/Countdown";
 
 const NewItems = () => {
   const [newNft, setNewNft] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [timeNow, setTimeNow] = useState(Date.now());
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
@@ -64,27 +65,6 @@ const NewItems = () => {
     fetchNewNftData();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeNow(Date.now());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  function getTimeLeft(expiryDate) {
-    const now = Date.now();
-    const difference = expiryDate - now;
-
-    if (difference <= 0) return null;
-
-    const hours = Math.floor(difference / (1000 * 60 * 60));
-    const minutes = Math.floor((difference / (1000 * 60)) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
-
-    return `${hours}h ${minutes}m ${seconds}s`;
-  }
-
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -111,13 +91,36 @@ const NewItems = () => {
                 ? new Array(4).fill(0).map((_, index) => (
                     <div className="keen-slider__slide" key={index}>
                       <div className="nft_coll skeleton-card">
-                        <div className="nft_wrap skeleton skeleton-img"></div>
-                        <div className="nft_coll_pp">
-                          <div className="skeleton skeleton-avatar"></div>
+                        <div className="nft_wrap">
+                          <Skeleton
+                            width="100%"
+                            height="100%"
+                            borderRadius="0"
+                          />
                         </div>
+
+                        <div className="nft_coll_pp">
+                          <Skeleton
+                            width="54px"
+                            height="54px"
+                            borderRadius="50%"
+                          />
+                        </div>
+
                         <div className="nft_coll_info">
-                          <div className="skeleton skeleton-title"></div>
-                          <div className="skeleton skeleton-text"></div>
+                          <Skeleton
+                            width="45%"
+                            height="14px"
+                            borderRadius="6px"
+                            margin="0px 0px 5px 0px"
+                            className="mx-auto"
+                          />
+                          <Skeleton
+                            width="28%"
+                            height="12px"
+                            borderRadius="6px"
+                            className="mx-auto"
+                          />
                         </div>
                       </div>
                     </div>
@@ -140,9 +143,9 @@ const NewItems = () => {
                             <i className="fa fa-check"></i>
                           </Link>
                         </div>
-                        {getTimeLeft(item.expiryDate) && (
+                        {item.expiryDate && (
                           <div className="de_countdown">
-                            {getTimeLeft(item.expiryDate)}
+                            <Countdown expiryDate={item.expiryDate} />
                           </div>
                         )}
                         <div className="nft__item_wrap">

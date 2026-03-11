@@ -16651,7 +16651,7 @@ img {
 }
 
 .skeleton-box {
-  display: inline-block;
+  display: flex;
   height: 1em;
   position: relative;
   overflow: hidden;

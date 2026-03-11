@@ -5,6 +5,7 @@ import axios from "axios";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import "./HotCollections.css";
+import Skeleton from "../../UI/Skeleton";
 
 const HotCollections = () => {
   const [nft, setNft] = useState([]);
@@ -90,15 +91,36 @@ const HotCollections = () => {
                 ? new Array(4).fill(0).map((_, index) => (
                     <div className="keen-slider__slide" key={index}>
                       <div className="nft_coll skeleton-card">
-                        <div className="nft_wrap skeleton skeleton-img"></div>
+                        <div className="nft_wrap">
+                          <Skeleton
+                            width="100%"
+                            height="100%"
+                            borderRadius="0"
+                          />
+                        </div>
 
                         <div className="nft_coll_pp">
-                          <div className="skeleton skeleton-avatar"></div>
+                          <Skeleton
+                            width="54px"
+                            height="54px"
+                            borderRadius="50%"
+                          />
                         </div>
 
                         <div className="nft_coll_info">
-                          <div className="skeleton skeleton-title"></div>
-                          <div className="skeleton skeleton-text"></div>
+                          <Skeleton
+                            width="45%"
+                            height="14px"
+                            borderRadius="6px"
+                            margin="0px 0px 5px 0px"
+                            className="mx-auto"
+                          />
+                          <Skeleton
+                            width="28%"
+                            height="12px"
+                            borderRadius="6px"
+                            className="mx-auto"
+                          />
                         </div>
                       </div>
                     </div>
