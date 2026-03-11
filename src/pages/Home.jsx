@@ -4,7 +4,7 @@ import HotCollections from "../components/home/HotCollections/HotCollections";
 import Landing from "../components/home/Landing";
 import LandingIntro from "../components/home/LandingIntro";
 import NewItems from "../components/home/NewItems";
-import TopSellers from "../components/home/TopSellers/TopSellers";
+import TopSellers from "../components/home/TopSellers";
 
 const Home = () => {
   useEffect(() => {

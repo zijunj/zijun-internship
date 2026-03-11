@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./TopSellers.css";
+import Skeleton from "../UI/Skeleton";
 
 const TopSellers = () => {
   const [author, setAuthor] = useState([]);
@@ -43,12 +43,25 @@ const TopSellers = () => {
                 ? new Array(12).fill(0).map((_, index) => (
                     <li key={index}>
                       <div className="author_list_pp">
-                        <div className="skeleton skeleton-author-avatar lazy pp-author"></div>
+                        <Skeleton
+                          width="50px"
+                          height="50px"
+                          borderRadius="50%"
+                        />
                         <i className="fa fa-check"></i>
                       </div>
                       <div className="author_list_info">
-                        <div className="skeleton skeleton-author-name"></div>
-                        <div className="skeleton skeleton-author-price"></div>
+                        <Skeleton
+                          width="120px"
+                          height="14px"
+                          borderRadius="6px"
+                          margin="0px 0px 5px 0px"
+                        />
+                        <Skeleton
+                          width="80px"
+                          height="12px"
+                          borderRadius="6px"
+                        />
                       </div>
                     </li>
                   ))
